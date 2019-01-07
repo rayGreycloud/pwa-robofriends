@@ -36,6 +36,7 @@ describe('<MainPage />', () => {
       onRequestRobots: jest.fn(),
       robots: testRobots,
       searchField: 'k',
+      isPending: false,
     };
 
     wrapper = shallow(<MainPage {...mockProps} />);
@@ -45,5 +46,18 @@ describe('<MainPage />', () => {
     let expectedResults = [];
     wrapper = shallow(<MainPage {...mockProps} />);
     expect(wrapper.instance().filterRobots()).toEqual(expectedResults);
+  });
+
+  it('should render loading div if isPending', () => {
+    let mockProps = {
+      onRequestRobots: jest.fn(),
+      robots: [],
+      searchField: '',
+      isPending: true,
+    };
+
+    wrapper = shallow(<MainPage {...mockProps} />);
+
+    expect(wrapper.find('#loader')).toHaveLength(1);
   });
 });
