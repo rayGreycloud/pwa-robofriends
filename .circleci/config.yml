@@ -1,12 +1,12 @@
 version: 2
 jobs:
-  cindy:
+  build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/node:7.10
     steps:
       - checkout
       - run: echo "Cindy says hello"
-  bobby:
+  test:
     docker:
       - image: circleci/node:7.10
     steps:
@@ -14,8 +14,7 @@ jobs:
       - run: echo "Bobby says hello"
   workflows:
     version: 2
-    cindy_bobby: 
+    build_and_test: 
       jobs:
-        - cindy
-        - bobby
-        
+        - build
+        - test
