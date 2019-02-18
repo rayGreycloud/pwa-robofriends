@@ -1,9 +1,5 @@
 # robofriends clone
 
-Tutorial for udemy course - React + Redux
-
-To run the project:
-
-1. Clone this repo
-2. Run `npm install`
-3. Run `npm start`
+## added redux for state mgt
+## added testing coverage using jest and enzyme
+## added circleci for ci/cd
