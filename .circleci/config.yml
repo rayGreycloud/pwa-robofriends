@@ -2,19 +2,27 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:8.9
     steps:
       - checkout
-      - run: echo "Cindy says hello"
+      - run: echo "pre-build npm install"
+      - run: npm install
+      - run: echo "npm building"      
+      - run: CI=true npm run build
   test:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:8.9
     steps:
       - checkout
-      - run: echo "Bobby says hello"
+      - run: echo "pre-test npm install"
+      - run: npm install
+      - run: echo "npm testing"      
+      - run: npm run test
 workflows:
   version: 2
   build_and_test: 
     jobs:
       - build
-      - test
+      - test: 
+        requires:
+          - build
