@@ -17,6 +17,7 @@ jobs:
       - run: echo "pre-test npm install"
       - run: npm install
       - run: echo "npm testing"      
+      - run: npm run test -- -u
       - run: npm run test
 workflows:
   version: 2
